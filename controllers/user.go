@@ -10,10 +10,12 @@ import(
 "net/http" // to work with http requests in golang
 )
 
+// This struct is used to manage the MongoDB session.
 type UserController struct{
 	session *mgo.Session
 }
 
+// The NewUserController function is a constructor that creates a new instance of the UserController and initializes it with the provided MongoDB session.
 func NewUserController(s *mgo.Session) *UserController{
 return &UserController{s}
 }
@@ -95,3 +97,5 @@ func (uc UserController) DeleteUser(w http.ResponseWriter, r *http.Request, p ht
 	w.WriteHeader(http.StatusOK) // 200
 	fmt.Fprint(w, "Deleted user", oid, "\n")
 }
+
+// This file defines a UserController struct and methods for handling user-related operations such as retrieving a user, creating a user, and deleting a user.
